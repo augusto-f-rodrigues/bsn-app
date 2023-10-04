@@ -10,5 +10,7 @@
         </ion-card>
       </ion-col>
     </ion-row>
+    <app-pagination [items]="pokemonListResponse" [currentPage]="currentPage"
+      (offsetChange)="onOffsetChange($event)"></app-pagination>
   </ion-content>
 </ion-content>

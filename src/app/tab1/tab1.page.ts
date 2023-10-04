@@ -14,16 +14,18 @@ export class Tab1Page {
   constructor(private http: HttpClient) {}
 
   pokemonInformations: PokemonI[] = [];
+  currentPage = 0;
+  offset = 0;
 
   pokemonListResponse: PokemonListResponseI = {
     count: 0,
-    next: 'https://pokeapi.co/api/v2/pokemon?offset=20&limit=20',
+    next: 'null',
     previous: 'null',
     results: [],
   };
 
   async ngOnInit() {
-    const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon`);
+    const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=8`);
     this.pokemonListResponse = data;
     await this.getNameAndImageUrl();
 
@@ -37,5 +39,13 @@ export class Tab1Page {
     });
 
     this.pokemonInformations = await Promise.all(promises);
+  }
+
+  async onOffsetChange(newOffset: any) {
+    this.offset = newOffset;
+    const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${this.offset}&limit=8`);
+    this.pokemonListResponse = data;
+    await this.getNameAndImageUrl();
+    console.log(this.offset)
   }
 }
