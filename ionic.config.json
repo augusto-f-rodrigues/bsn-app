@@ -1,0 +1,8 @@
+{
+  "name": "bsn-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "ca862f37"
+}
