@@ -5,5 +5,10 @@
     </ion-toolbar>
   </ion-header>
 
-  <h1>salve</h1>
+  <ion-card class="card">
+    <img [alt]="pokemonInformations.name" [src]="pokemonInformations.sprites?.front_default" />
+    <ion-card-header>
+      <ion-card-title>{{ pokemonInformations.name }}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
 </ion-content>

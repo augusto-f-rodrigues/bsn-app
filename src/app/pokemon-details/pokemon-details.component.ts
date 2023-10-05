@@ -1,7 +1,9 @@
-import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import axios from 'axios';
 import { lastValueFrom } from 'rxjs';
+import { PokemonI } from 'src/interfaces/Pokemon.interface';
+import { PokemonService } from '../services/pokemon.service';
 
 @Component({
   selector: 'app-pokemon-details',
@@ -11,15 +13,22 @@ import { lastValueFrom } from 'rxjs';
 export class PokemonDetailsComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
-    private location: Location
+    private router: Router,
+    private pokemonService: PokemonService
   ) {}
 
+  pokemonInformations: Partial<PokemonI> = {};
+
   async ngOnInit() {
-    const params = await lastValueFrom(this.activatedRoute.params);
-    console.log(params);
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
+
+    console.log(id)
+    const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
+    this.pokemonInformations = data;
+    console.log(data);
   }
 
   onClickBackButton() {
-    this.location.back();
+    this.router.navigate(['/tabs/tab1']);
   }
 }

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
-import axios from 'axios';
-import { PokemonListResponseI } from 'src/interfaces/PokemonListResponse.interface';
-import { PokemonI } from 'src/interfaces/Pokemon.interface';
 import { Router } from '@angular/router';
+import axios from 'axios';
+import { PokemonI } from 'src/interfaces/Pokemon.interface';
+import { PokemonListResponseI } from 'src/interfaces/PokemonListResponse.interface';
+import { PokemonService } from '../services/pokemon.service';
 
 @Component({
   selector: 'app-tab1',
@@ -12,7 +12,10 @@ import { Router } from '@angular/router';
   styleUrls: ['tab1.page.scss'],
 })
 export class Tab1Page {
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private router: Router,
+    private pokemonService: PokemonService
+  ) {}
 
   pokemonInformations: PokemonI[] = [];
   currentPage = 0;
@@ -31,8 +34,6 @@ export class Tab1Page {
     );
     this.pokemonListResponse = data;
     await this.getNameAndImageUrl();
-
-    console.log(this.pokemonInformations);
   }
 
   async getNameAndImageUrl() {
@@ -51,11 +52,9 @@ export class Tab1Page {
     );
     this.pokemonListResponse = data;
     await this.getNameAndImageUrl();
-    console.log(this.offset);
   }
 
   onClickShowDetails(id: number) {
-    console.log(id)
     this.router.navigate([`tabs/tab1/${id}`]);
   }
 }
