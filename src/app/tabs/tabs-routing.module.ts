@@ -12,6 +12,10 @@ const routes: Routes = [
         loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule)
       },
       {
+        path: 'tab1/:id',
+        loadChildren: () => import('../pokemon-details/pokemon-details.module').then(m => m.PokemonDetailsModule)
+      },
+      {
         path: 'tab2',
         loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
       },

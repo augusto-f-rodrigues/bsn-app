@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import axios from 'axios';
 import { PokemonListResponseI } from 'src/interfaces/PokemonListResponse.interface';
 import { PokemonI } from 'src/interfaces/Pokemon.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -11,7 +12,7 @@ import { PokemonI } from 'src/interfaces/Pokemon.interface';
   styleUrls: ['tab1.page.scss'],
 })
 export class Tab1Page {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   pokemonInformations: PokemonI[] = [];
   currentPage = 0;
@@ -25,7 +26,9 @@ export class Tab1Page {
   };
 
   async ngOnInit() {
-    const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=8`);
+    const { data } = await axios.get(
+      `https://pokeapi.co/api/v2/pokemon?offset=0&limit=8`
+    );
     this.pokemonListResponse = data;
     await this.getNameAndImageUrl();
 
@@ -33,7 +36,7 @@ export class Tab1Page {
   }
 
   async getNameAndImageUrl() {
-    const promises = await this.pokemonListResponse.results.map(async (el) => {
+    const promises = this.pokemonListResponse.results.map(async (el) => {
       const { data } = await axios.get(el.url);
       return data;
     });
@@ -43,9 +46,16 @@ export class Tab1Page {
 
   async onOffsetChange(newOffset: any) {
     this.offset = newOffset;
-    const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${this.offset}&limit=8`);
+    const { data } = await axios.get(
+      `https://pokeapi.co/api/v2/pokemon?offset=${this.offset}&limit=8`
+    );
     this.pokemonListResponse = data;
     await this.getNameAndImageUrl();
-    console.log(this.offset)
+    console.log(this.offset);
+  }
+
+  onClickShowDetails(id: number) {
+    console.log(id)
+    this.router.navigate([`tabs/tab1/${id}`]);
   }
 }
