@@ -16,6 +16,6 @@ export class PokemonCardComponent implements OnInit {
   async ngOnInit() {}
 
   onClickShowDetails(id: number) {
-    this.router.navigate([`tabs/tab1/${id}`]);
+    this.router.navigate([`tabs/home/${id}`]);
   }
 }

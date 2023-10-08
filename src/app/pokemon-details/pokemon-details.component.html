@@ -5,7 +5,7 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-card style="align-items: center;display: flex;flex-direction: column;" class="card">
+  <ion-card style="padding: 16px; align-items: center;display: flex;flex-direction: column;" class="card">
     <ion-item lines="none" class="item-background-color">
       <ion-icon name="heart" color="danger"></ion-icon>
       <ion-label> HP: {{pokemonHp}}</ion-label>
@@ -36,8 +36,10 @@
         <ion-label> Peso: {{pokemonInformations.weight / 10}} kg</ion-label>
       </ion-item>
     </ion-card-content>
+
     <ion-button (click)="onClickToFavorite()">
-      Favoritar <ion-icon name="star" color="warning"></ion-icon>
+      <ion-icon style="margin-right: 12px;" name="star" color="warning"></ion-icon>
+      {{favorite ? "Adicionar aos favoritos" : "Remover dos favoritos"}}
     </ion-button>
   </ion-card>
 </ion-content>
