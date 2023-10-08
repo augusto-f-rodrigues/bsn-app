@@ -22,12 +22,20 @@ export class StorageService {
     this._storage?.set(id, pokemon);
   }
 
-  public getAll() {
-    this._storage?.keys();
+  public async getAll() {
+    const keys = await this.storage.keys();
+    const values: any[] = [];
+  
+    for (const key of keys) {
+      const value = await this.storage.get(key);
+      values.push(value)
+    }
+  
+    return values;
   }
 
-  public get(id: string) {
-    const pokemon = this._storage?.get(id);
+  public async get(id: string) {
+    const pokemon = await this._storage?.get(id);
     return pokemon;
   }
 
@@ -46,11 +54,10 @@ export class StorageService {
 
   public async toggleFavoriteState(id: string, pokemon: PokemonI) {
     const status = await this.checkIsAlreadyInFavorites(id);
-    console.log(status);
     if (status) {
-      this.storage.remove(id);
+      this.remove(id);
     } else {
-      this.storage.set(id, pokemon);
+      this.set(id, pokemon);
     }
   }
 }
