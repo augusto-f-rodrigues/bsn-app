@@ -1,0 +1,21 @@
+.card{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pokemonName {
+  width: 120px;
+  text-align: center;
+  font-size: large;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cardHeader{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

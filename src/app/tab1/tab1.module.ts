@@ -6,15 +6,15 @@ import { Tab1Page } from './tab1.page';
 
 import { Tab1PageRoutingModule } from './tab1-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { PaginationModule } from '../pagination/pagination.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     IonicModule,
     HttpClientModule,
+    SharedModule,
     CommonModule,
     FormsModule,
-    PaginationModule,
     Tab1PageRoutingModule
   ],
   declarations: [Tab1Page]

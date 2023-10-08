@@ -2,12 +2,7 @@
   <ion-content class="ion-padding">
     <ion-row>
       <ion-col size="6" *ngFor="let pokemon of pokemonInformations">
-        <ion-card (click)="onClickShowDetails(pokemon.id)" class="card">
-          <img [alt]="pokemon.name" [src]="pokemon.sprites.front_default" />
-          <ion-card-header class="cardHeader">
-            <ion-card-title class="pokemonName">{{ pokemon.name?.charAt(0)?.toUpperCase() + (pokemon.name?.slice(1) ?? '')}}</ion-card-title>
-          </ion-card-header>
-        </ion-card>
+        <app-pokemon-card [pokemon]="pokemon"></app-pokemon-card>
       </ion-col>
     </ion-row>
     <app-pagination [items]="pokemonListResponse" [currentPage]="currentPage"

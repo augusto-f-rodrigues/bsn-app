@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import axios from 'axios';
-import { lastValueFrom } from 'rxjs';
 import { PokemonI } from 'src/interfaces/pokemon.interface';
 import { Pokemon } from 'src/model/pokemon.model';
 import { StorageService } from '../services/storage.service';
