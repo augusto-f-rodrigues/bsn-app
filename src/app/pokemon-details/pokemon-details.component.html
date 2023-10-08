@@ -1,14 +1,40 @@
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <ion-header>
     <ion-toolbar>
-      <ion-button (click)="onClickBackButton()">Voltar</ion-button>
+      <ion-button style="margin-left: 16px;" (click)="onClickBackButton()">Voltar</ion-button>
     </ion-toolbar>
   </ion-header>
 
-  <ion-card class="card">
-    <img [alt]="pokemonInformations.name" [src]="pokemonInformations.sprites?.front_default" />
-    <ion-card-header>
-      <ion-card-title>{{ pokemonInformations.name }}</ion-card-title>
+  <ion-card style="align-items: center;display: flex;flex-direction: column;" class="card">
+    <ion-item lines="none" class="item-background-color">
+      <ion-icon name="heart" color="danger"></ion-icon>
+      <ion-label> HP: {{pokemonHp}}</ion-label>
+    </ion-item>
+    <ion-avatar style="background-color: #44403C; height: 150px; width: 150px;margin-top: 16px;">
+      <img height="250px" width="250px" [alt]="pokemonInformations.name"
+        [src]="pokemonInformations.sprites?.front_default" />
+    </ion-avatar>
+    <ion-card-header class="card-header">
+      <ion-card-title>{{ pokemonInformations.name?.charAt(0)?.toUpperCase() + (pokemonInformations?.name?.slice(1) ??
+        '')}}</ion-card-title>
+      <ion-card-subtitle>Pokemon Nº {{pokemonInformations.id}}</ion-card-subtitle>
     </ion-card-header>
+
+    <ion-card-content>
+      <ion-list lines="none">
+        <ion-item class="item-background-color" *ngFor="let types of pokemonInformations.types">
+          <div style="margin-bottom: 12px;" class="type-{{types.type.name}} type-card">{{types.type.name.toUpperCase()}}
+          </div>
+        </ion-item>
+      </ion-list>
+      <ion-item lines="none" class="item-background-color">
+        <ion-icon name="trending-up-outline"></ion-icon>
+        <ion-label> Altura: {{pokemonInformations.height / 10}} m</ion-label>
+      </ion-item>
+      <ion-item lines="none" class="item-background-color">
+        <ion-icon name="barbell-outline"></ion-icon>
+        <ion-label> Peso: {{pokemonInformations.weight / 10}} kg</ion-label>
+      </ion-item>
+    </ion-card-content>
   </ion-card>
 </ion-content>
