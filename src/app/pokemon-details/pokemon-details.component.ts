@@ -4,6 +4,7 @@ import axios from 'axios';
 import { lastValueFrom } from 'rxjs';
 import { PokemonI } from 'src/interfaces/pokemon.interface';
 import { Pokemon } from 'src/model/pokemon.model';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-pokemon-details',
@@ -13,9 +14,10 @@ import { Pokemon } from 'src/model/pokemon.model';
 export class PokemonDetailsComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private storage: StorageService
   ) {
-    this.pokemonInformations = new Pokemon
+    this.pokemonInformations = new Pokemon();
   }
 
   pokemonInformations: PokemonI;
@@ -25,16 +27,25 @@ export class PokemonDetailsComponent implements OnInit {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
     this.pokemonInformations = data;
-    this.getPokemonHp()
+    this.getPokemonHp();
   }
 
-  getPokemonHp(){
-    const hpStat = this.pokemonInformations.stats.find(el => el.stat.name == "hp")
-    console.log(hpStat)
-    this.pokemonHp = hpStat?.base_stat ?? 0
+  getPokemonHp() {
+    const hpStat = this.pokemonInformations.stats.find(
+      (el) => el.stat.name == 'hp'
+    );
+    console.log(hpStat);
+    this.pokemonHp = hpStat?.base_stat ?? 0;
   }
 
   onClickBackButton() {
     this.router.navigate(['/tabs/tab1']);
+  }
+
+  async onClickToFavorite() {
+    this.storage.toggleFavoriteState(
+      this.pokemonInformations.id.toString(),
+      this.pokemonInformations
+    );
   }
 }

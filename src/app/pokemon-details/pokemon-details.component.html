@@ -36,5 +36,8 @@
         <ion-label> Peso: {{pokemonInformations.weight / 10}} kg</ion-label>
       </ion-item>
     </ion-card-content>
+    <ion-button (click)="onClickToFavorite()">
+      Favoritar <ion-icon name="star" color="warning"></ion-icon>
+    </ion-button>
   </ion-card>
 </ion-content>
