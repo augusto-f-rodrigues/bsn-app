@@ -1,12 +1,11 @@
 
-import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ViewWillEnter } from '@ionic/angular';
 import axios from 'axios';
 import { PokemonI } from 'src/interfaces/pokemon';
 import { Pokemon } from 'src/model/pokemon.model';
 import { StorageService } from '../services/storage.service';
-import { ViewWillEnter } from '@ionic/angular';
 
 @Component({
   selector: 'app-pokemon-details',
@@ -17,7 +16,7 @@ export class PokemonDetailsComponent implements OnInit, ViewWillEnter {
   constructor(
     private activatedRoute: ActivatedRoute,
     private storage: StorageService,
-    private location: Location
+    private router: Router
   ) {
     this.pokemonInformations = new Pokemon();
   }
@@ -42,7 +41,7 @@ export class PokemonDetailsComponent implements OnInit, ViewWillEnter {
   }
 
   onClickBackButton() {
-    this.location.back();
+    this.router.navigate(['/tabs/home']);
   }
 
   async onClickToFavorite() {
