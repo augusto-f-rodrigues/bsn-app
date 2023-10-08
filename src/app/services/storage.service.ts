@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 
 import { Storage } from '@ionic/storage-angular';
-import { PokemonI } from 'src/interfaces/pokemon.interface';
+import { PokemonI } from 'src/interfaces/pokemon';
 
 @Injectable({
   providedIn: 'root',

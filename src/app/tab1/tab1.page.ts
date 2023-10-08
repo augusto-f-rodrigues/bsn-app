@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 
 import { Router } from '@angular/router';
 import axios from 'axios';
-import { PokemonI } from 'src/interfaces/pokemon.interface';
-import { PokemonListResponseI } from 'src/interfaces/pokemonListResponse.interface';
+import { PokemonI } from 'src/interfaces/pokemon';
+import { PokemonListResponseI } from 'src/interfaces/pokemonListResponse';
 
 @Component({
   selector: 'app-tab1',

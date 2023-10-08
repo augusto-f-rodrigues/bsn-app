@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PokemonI } from 'src/interfaces/pokemon.interface';
+import { PokemonI } from 'src/interfaces/pokemon';
 
 @Component({
   selector: 'app-pokemon-card',

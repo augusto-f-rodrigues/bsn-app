@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { PokemonListResponseI } from 'src/interfaces/pokemonListResponse.interface';
+import { PokemonListResponseI } from 'src/interfaces/pokemonListResponse';
 
 @Component({
   selector: 'app-pagination',

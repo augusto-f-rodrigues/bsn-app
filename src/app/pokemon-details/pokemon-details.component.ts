@@ -3,7 +3,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import axios from 'axios';
-import { PokemonI } from 'src/interfaces/pokemon.interface';
+import { PokemonI } from 'src/interfaces/pokemon';
 import { Pokemon } from 'src/model/pokemon.model';
 import { StorageService } from '../services/storage.service';
 import { ViewWillEnter } from '@ionic/angular';
