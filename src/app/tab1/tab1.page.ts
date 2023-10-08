@@ -35,7 +35,7 @@ export class Tab1Page {
   }
 
   async getNameAndImageUrl() {
-    const promises = this.pokemonListResponse.results.map(async (el) => {
+    const promises = this.pokemonListResponse.results.map(async (el: any) => {
       const { data } = await axios.get(el.url);
       return data;
     });

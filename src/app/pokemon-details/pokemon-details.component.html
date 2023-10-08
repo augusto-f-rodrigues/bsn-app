@@ -12,7 +12,7 @@
     </ion-item>
     <ion-avatar style="background-color: #44403C; height: 150px; width: 150px;margin-top: 16px;">
       <img height="250px" width="250px" [alt]="pokemonInformations.name"
-        [src]="pokemonInformations.sprites?.front_default" />
+        [src]="pokemonInformations.sprites.front_default" />
     </ion-avatar>
     <ion-card-header class="card-header">
       <ion-card-title>{{ pokemonInformations.name?.charAt(0)?.toUpperCase() + (pokemonInformations?.name?.slice(1) ??

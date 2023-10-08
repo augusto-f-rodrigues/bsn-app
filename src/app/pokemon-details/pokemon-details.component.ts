@@ -1,3 +1,4 @@
+
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -35,7 +36,7 @@ export class PokemonDetailsComponent implements OnInit, ViewWillEnter {
 
   getPokemonHp() {
     const hpStat = this.pokemonInformations.stats.find(
-      (el) => el.stat.name == 'hp'
+      (el: any) => el.stat.name == 'hp'
     );
     this.pokemonHp = hpStat?.base_stat ?? 0;
   }

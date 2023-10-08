@@ -1,4 +1,4 @@
-export interface PokemonI {
+export type PokemonI = {
   abilities: Ability[]
   base_experience: number
   forms: Form[]
