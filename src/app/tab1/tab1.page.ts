@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import axios from 'axios';
 import { PokemonI } from 'src/interfaces/pokemon.interface';
 import { PokemonListResponseI } from 'src/interfaces/pokemonListResponse.interface';
-import { PokemonService } from '../services/pokemon.service';
 
 @Component({
   selector: 'app-tab1',
@@ -13,8 +12,7 @@ import { PokemonService } from '../services/pokemon.service';
 })
 export class Tab1Page {
   constructor(
-    private router: Router,
-    private pokemonService: PokemonService
+    private router: Router
   ) {}
 
   pokemonInformations: PokemonI[] = [];

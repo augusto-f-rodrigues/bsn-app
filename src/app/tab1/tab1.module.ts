@@ -7,7 +7,6 @@ import { Tab1Page } from './tab1.page';
 import { Tab1PageRoutingModule } from './tab1-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { PaginationModule } from '../pagination/pagination.module';
-import { PokemonService } from '../services/pokemon.service';
 
 @NgModule({
   imports: [

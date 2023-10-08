@@ -3,7 +3,6 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import axios from 'axios';
 import { lastValueFrom } from 'rxjs';
 import { PokemonI } from 'src/interfaces/pokemon.interface';
-import { PokemonService } from '../services/pokemon.service';
 import { Pokemon } from 'src/model/pokemon.model';
 
 @Component({
@@ -14,8 +13,7 @@ import { Pokemon } from 'src/model/pokemon.model';
 export class PokemonDetailsComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private pokemonService: PokemonService
+    private router: Router
   ) {
     this.pokemonInformations = new Pokemon
   }
